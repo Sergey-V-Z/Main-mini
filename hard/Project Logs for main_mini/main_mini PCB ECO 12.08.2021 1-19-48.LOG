@@ -1,0 +1,53 @@
+Added Component: Designator=IÑ2(LAN8742A)
+Added Component: Designator=Q2(HC49SM)
+Added Pin To Net: NetName=+3.3v Pin=IÑ2-1
+Added Pin To Net: NetName=NetC31_2 Pin=IÑ2-4
+Added Pin To Net: NetName=NetC32_2 Pin=IÑ2-5
+Added Pin To Net: NetName=NetC28_1 Pin=IÑ2-6
+Added Pin To Net: NetName=+3.3v Pin=IÑ2-9
+Added Pin To Net: NetName=RMII_MDIO Pin=IÑ2-12
+Added Pin To Net: NetName=RMII_MDC Pin=IÑ2-13
+Added Pin To Net: NetName=Eth_NRST Pin=IÑ2-15
+Added Pin To Net: NetName=RMII_TX_EN Pin=IÑ2-16
+Added Pin To Net: NetName=RMII_TXD0 Pin=IÑ2-17
+Added Pin To Net: NetName=RMII_TXD1 Pin=IÑ2-18
+Added Pin To Net: NetName=+3.3v Pin=IÑ2-19
+Added Pin To Net: NetName=P1_TX_N Pin=IÑ2-20
+Added Pin To Net: NetName=P1_TX_P Pin=IÑ2-21
+Added Pin To Net: NetName=P1_RX_N Pin=IÑ2-22
+Added Pin To Net: NetName=P1_RX_P Pin=IÑ2-23
+Added Pin To Net: NetName=GND Pin=IÑ2-25
+Added Pin To Net: NetName=NetC31_2 Pin=Q2-1
+Added Pin To Net: NetName=NetC32_2 Pin=Q2-2
+Added Pin To Net: NetName=NetIÑ2_2 Pin=IÑ2-2
+Added Pin To Net: NetName=NetIÑ2_2 Pin=R21-1
+Added Pin To Net: NetName=NetIÑ2_2 Pin=R24-2
+Added Net: Name=NetIÑ2_2
+Added Pin To Net: NetName=NetIÑ2_3 Pin=IÑ2-3
+Added Pin To Net: NetName=NetIÑ2_3 Pin=R19-1
+Added Pin To Net: NetName=NetIÑ2_3 Pin=R25-2
+Added Net: Name=NetIÑ2_3
+Added Pin To Net: NetName=NetIÑ2_7 Pin=IÑ2-7
+Added Pin To Net: NetName=NetIÑ2_7 Pin=R8-1
+Added Pin To Net: NetName=NetIÑ2_7 Pin=R15-2
+Added Net: Name=NetIÑ2_7
+Added Pin To Net: NetName=NetIÑ2_8 Pin=IÑ2-8
+Added Pin To Net: NetName=NetIÑ2_8 Pin=R7-1
+Added Pin To Net: NetName=NetIÑ2_8 Pin=R14-2
+Added Net: Name=NetIÑ2_8
+Added Pin To Net: NetName=NetIÑ2_10 Pin=IÑ2-10
+Added Pin To Net: NetName=NetIÑ2_10 Pin=R16-2
+Added Net: Name=NetIÑ2_10
+Added Pin To Net: NetName=NetIÑ2_11 Pin=IÑ2-11
+Added Pin To Net: NetName=NetIÑ2_11 Pin=R9-1
+Added Pin To Net: NetName=NetIÑ2_11 Pin=R17-2
+Added Net: Name=NetIÑ2_11
+Added Pin To Net: NetName=NetIÑ2_14 Pin=IÑ2-14
+Added Pin To Net: NetName=NetIÑ2_14 Pin=R12-1
+Added Pin To Net: NetName=NetIÑ2_14 Pin=R20-2
+Added Net: Name=NetIÑ2_14
+Added Pin To Net: NetName=NetIÑ2_24 Pin=IÑ2-24
+Added Pin To Net: NetName=NetIÑ2_24 Pin=R18-1
+Added Net: Name=NetIÑ2_24
+Added Member To Class: ClassName=main_mini Member=Component IÑ2 LAN8742A-CZ-TR
+Added Member To Class: ClassName=main_mini Member=Component Q2 25MHz
