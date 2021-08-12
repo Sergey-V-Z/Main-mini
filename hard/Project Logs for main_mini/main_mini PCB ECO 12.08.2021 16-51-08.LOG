@@ -1,0 +1,52 @@
+Removed Pin From Net: NetName=GND_ISO Pin=C1_1-1
+Removed Pin From Net: NetName=+5v_ISO Pin=C1_1-2
+Removed Pin From Net: NetName=+5v_ISO Pin=C5_1-2
+Removed Pin From Net: NetName=GND_ISO Pin=C6_1-1
+Removed Pin From Net: NetName=+5v_ISO Pin=C6_1-2
+Removed Pin From Net: NetName=GND_ISO Pin=D1_1-5
+Removed Pin From Net: NetName=GND_ISO Pin=D3_1-3
+Removed Pin From Net: NetName=GND_ISO Pin=DD3_1-5
+Removed Pin From Net: NetName=+5v_ISO Pin=DD3_1-8
+Removed Pin From Net: NetName=+5v_ISO Pin=ISO1_1-10
+Removed Pin From Net: NetName=+5v_ISO Pin=ISO1_1-16
+Removed Pin From Net: NetName=GND_ISO Pin=J4_1-3
+Removed Pin From Net: NetName=GND_ISO Pin=J4_1-S1
+Removed Pin From Net: NetName=GND_ISO Pin=J4_1-S2
+Removed Pin From Net: NetName=+5v_RJ Pin=J4_2-4
+Removed Pin From Net: NetName=GND_ISO Pin=J5_1-3
+Removed Pin From Net: NetName=GND_ISO Pin=J5_1-S1
+Removed Pin From Net: NetName=GND_ISO Pin=J5_1-S2
+Removed Pin From Net: NetName=+5v_RJ Pin=J5_2-4
+Removed Pin From Net: NetName=GND_ISO Pin=R22_1-2
+Removed Pin From Net: NetName=+5v_ISO Pin=R23_1-1
+Removed Pin From Net: NetName=+5v_ISO Pin=XP1_1-2
+Removed Pin From Net: NetName=+5v_RJ Pin=XP1_2-1
+Change Net Name : Old Net Name=+5v_ISO New Net Name=NetC1_2_2
+Change Net Name : Old Net Name=+5v_RJ New Net Name=NetJ4_1_4
+Change Net Name : Old Net Name=GND_ISO New Net Name=NetC1_2_1
+Added Pin To Net: NetName=NetC1_1_1 Pin=C1_1-1
+Added Pin To Net: NetName=NetC1_1_1 Pin=C6_1-1
+Added Pin To Net: NetName=NetC1_1_1 Pin=D1_1-5
+Added Pin To Net: NetName=NetC1_1_1 Pin=D3_1-3
+Added Pin To Net: NetName=NetC1_1_1 Pin=DD3_1-5
+Added Pin To Net: NetName=NetC1_1_1 Pin=J4_1-3
+Added Pin To Net: NetName=NetC1_1_1 Pin=J4_1-S1
+Added Pin To Net: NetName=NetC1_1_1 Pin=J4_1-S2
+Added Pin To Net: NetName=NetC1_1_1 Pin=J5_1-3
+Added Pin To Net: NetName=NetC1_1_1 Pin=J5_1-S1
+Added Pin To Net: NetName=NetC1_1_1 Pin=J5_1-S2
+Added Pin To Net: NetName=NetC1_1_1 Pin=R22_1-2
+Added Net: Name=NetC1_1_1
+Added Pin To Net: NetName=NetC1_1_2 Pin=C1_1-2
+Added Pin To Net: NetName=NetC1_1_2 Pin=C5_1-2
+Added Pin To Net: NetName=NetC1_1_2 Pin=C6_1-2
+Added Pin To Net: NetName=NetC1_1_2 Pin=DD3_1-8
+Added Pin To Net: NetName=NetC1_1_2 Pin=ISO1_1-10
+Added Pin To Net: NetName=NetC1_1_2 Pin=ISO1_1-16
+Added Pin To Net: NetName=NetC1_1_2 Pin=R23_1-1
+Added Pin To Net: NetName=NetC1_1_2 Pin=XP1_1-2
+Added Net: Name=NetC1_1_2
+Added Pin To Net: NetName=NetJ4_2_4 Pin=J4_2-4
+Added Pin To Net: NetName=NetJ4_2_4 Pin=J5_2-4
+Added Pin To Net: NetName=NetJ4_2_4 Pin=XP1_2-1
+Added Net: Name=NetJ4_2_4
