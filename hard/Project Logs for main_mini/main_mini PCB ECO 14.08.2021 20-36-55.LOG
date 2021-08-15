@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=3.3v Pin=R57-2
+Removed Pin From Net: NetName=+3.3v Pin=R63-1
+Removed Member From Class: ClassName=main_mini Member=R57
+Removed Member From Class: ClassName=main_mini Member=R63
+Added Pin To Net: NetName=3.3v Pin=U8-21
+Added Pin To Net: NetName=+3.3v Pin=X2-5
