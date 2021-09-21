@@ -25,7 +25,7 @@
 #include "cmsis_os.h"
 
 /* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */     
+/* USER CODE BEGIN Includes */
 #include "ethernetif.h"
 #include "lwip/timeouts.h"
 #include "lwip.h"
@@ -117,19 +117,19 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the thread(s) */
   /* definition and creation of MainTask */
-  osThreadDef(MainTask, mainTask, osPriorityNormal, 0, 256);
+  osThreadDef(MainTask, mainTask, osPriorityLow, 0, 256);
   MainTaskHandle = osThreadCreate(osThread(MainTask), NULL);
 
   /* definition and creation of ModBus1Task */
-  osThreadDef(ModBus1Task, modbus1Task, osPriorityNormal, 0, 256);
+  osThreadDef(ModBus1Task, modbus1Task, osPriorityLow, 0, 256);
   ModBus1TaskHandle = osThreadCreate(osThread(ModBus1Task), NULL);
 
   /* definition and creation of ModBus2Task */
-  osThreadDef(ModBus2Task, modbus2Task, osPriorityNormal, 0, 256);
+  osThreadDef(ModBus2Task, modbus2Task, osPriorityLow, 0, 256);
   ModBus2TaskHandle = osThreadCreate(osThread(ModBus2Task), NULL);
 
   /* definition and creation of TCP_Server */
-  osThreadDef(TCP_Server, tcp_server, osPriorityNormal, 0, 256);
+  osThreadDef(TCP_Server, tcp_server, osPriorityLow, 0, 256);
   TCP_ServerHandle = osThreadCreate(osThread(TCP_Server), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
@@ -186,6 +186,7 @@ void mainTask(void const * argument)
     }
     
     sprintf(buffer, "from stm32\r\n");
+    sprintf(buffer, ip4addr_ntoa(&gnetif.ip_addr));
     res = netconn_write(nc, &buffer, strlen(buffer), NETCONN_COPY);
     if(res != NULL){
       //printf("write error\r\n");
@@ -288,7 +289,7 @@ void tcp_server(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    
+    while(gnetif.ip_addr.addr == 0) osDelay(10);
      
      conn = netconn_new(NETCONN_TCP);
      if (conn!=NULL)
