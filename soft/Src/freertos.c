@@ -153,75 +153,75 @@ void mainTask(void const * argument)
     
     //printf("Start StartTask02\r\n");   
     
-    struct netconn *nc;
-    struct netbuf *nb;
-    volatile err_t res;
-    uint16_t len;
-    ip_addr_t local_ip;
-    ip_addr_t remote_ip;
-    char buffer[512];// = pvPortMalloc(512);
-    
-    while(gnetif.ip_addr.addr == 0) osDelay(10);
-    //printf("IP: %s\r\n", ip4addr_ntoa(&gnetif.ip_addr));
-    
-    local_ip = gnetif.ip_addr;
-    ip4addr_aton("192.168.20.108", &remote_ip);
-    
-    nc = netconn_new(NETCONN_TCP);
-    if(nc == NULL){
-      //printf("new error\r\n");
-      while(1)osDelay(1);
-    }
-    
-    res = netconn_bind(nc, &local_ip, 0);
-    if(res != NULL){
-      //printf("bind error\r\n");
-      while(1)osDelay(1);
-    }
-    
-    res = netconn_connect(nc, &remote_ip, 80);
-    if(res != NULL){
-      //printf("conn error\r\n");
-      while(1)osDelay(1);
-    }
-    
-    sprintf(buffer, "from stm32\r\n");
-    sprintf(buffer, ip4addr_ntoa(&gnetif.ip_addr));
-    res = netconn_write(nc, &buffer, strlen(buffer), NETCONN_COPY);
-    if(res != NULL){
-      //printf("write error\r\n");
-      while(1)osDelay(1);
-    }
-    
-    res = netconn_recv(nc, &nb);
-    if(res != NULL){
-      //printf("reciv error\r\n");
-      while(1)osDelay(1);
-    }
-    len = netbuf_len(nb);
-    netbuf_copy(nb, buffer, len);
-    netbuf_delete(nb);
-    //printf("Recive %d bytes:\r\n%s\r\n",len, buffer);
+//    struct netconn *nc;
+//    struct netbuf *nb;
+//    volatile err_t res;
+//    uint16_t len;
+//    ip_addr_t local_ip;
+//    ip_addr_t remote_ip;
+//    char buffer[512];// = pvPortMalloc(512);
+//    
+//    while(gnetif.ip_addr.addr == 0) osDelay(10);
+//    //printf("IP: %s\r\n", ip4addr_ntoa(&gnetif.ip_addr));
+//    
+//    local_ip = gnetif.ip_addr;
+//    ip4addr_aton("192.168.20.108", &remote_ip);
+//    
+//    nc = netconn_new(NETCONN_TCP);
+//    if(nc == NULL){
+//      //printf("new error\r\n");
+//      while(1)osDelay(1);
+//    }
+//    
+//    res = netconn_bind(nc, &local_ip, 0);
+//    if(res != NULL){
+//      //printf("bind error\r\n");
+//      while(1)osDelay(1);
+//    }
+//    
+//    res = netconn_connect(nc, &remote_ip, 80);
+//    if(res != NULL){
+//      //printf("conn error\r\n");
+//      while(1)osDelay(1);
+//    }
+//    
+//    sprintf(buffer, "from stm32\r\n");
+//    sprintf(buffer, ip4addr_ntoa(&gnetif.ip_addr));
+//    res = netconn_write(nc, &buffer, strlen(buffer), NETCONN_COPY);
+//    if(res != NULL){
+//      //printf("write error\r\n");
+//      while(1)osDelay(1);
+//    }
+//    
+//    res = netconn_recv(nc, &nb);
+//    if(res != NULL){
+//      //printf("reciv error\r\n");
+//      while(1)osDelay(1);
+//    }
+//    len = netbuf_len(nb);
+//    netbuf_copy(nb, buffer, len);
+//    netbuf_delete(nb);
+//    //printf("Recive %d bytes:\r\n%s\r\n",len, buffer);
     /* Infinite loop */
     for(;;)
       {
-        //ethernetif_input(&gnetif);
-        //sys_check_timeouts();
-        res = netconn_recv(nc, &nb);
-        if(res != NULL){
-          //printf("reciv error\r\n");
-          while(1)osDelay(1);
-        }
-        len = netbuf_len(nb);
-        if(len != 0){
-          netbuf_copy(nb, buffer, len);
-          netbuf_delete(nb);
-          buffer[len] = 0;
-          //printf("Recive %d bytes:\r\n%s\r\n",len, buffer);  
-          //HAL_UART_Transmit(&huart3, buffer, len, 100);
-          netconn_write(nc, &buffer, strlen(buffer), NETCONN_COPY);
-        }
-        
+//        //ethernetif_input(&gnetif);
+//        //sys_check_timeouts();
+//        res = netconn_recv(nc, &nb);
+//        if(res != NULL){
+//          //printf("reciv error\r\n");
+//          while(1)osDelay(1);
+//        }
+//        len = netbuf_len(nb);
+//        if(len != 0){
+//          netbuf_copy(nb, buffer, len);
+//          netbuf_delete(nb);
+//          buffer[len] = 0;
+//          //printf("Recive %d bytes:\r\n%s\r\n",len, buffer);  
+//          //HAL_UART_Transmit(&huart3, buffer, len, 100);
+//          netconn_write(nc, &buffer, strlen(buffer), NETCONN_COPY);
+//        }
+//        
         osDelay(10);
         
       }
@@ -309,7 +309,7 @@ void tcp_server(void const * argument)
                     {
                        netbuf_data(buf,&in_data,&data_size);//get pointer and data size of the buffer
                        memcpy((void*)input_data,in_data,data_size);
-                       netconn_write(newconn,response,600,NETCONN_COPY);
+                       netconn_write(newconn,response,100,NETCONN_COPY);
                        __ASM("NOP");
                     } while (netbuf_next(buf) >= 0);
                     netbuf_delete(buf);

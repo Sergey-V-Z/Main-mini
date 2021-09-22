@@ -20,7 +20,7 @@
         <LeaveTargetRunning>_ 0</LeaveTargetRunning>
     </StLinkDriver>
     <DebugChecksum>
-        <Checksum>3051886702</Checksum>
+        <Checksum>75787929</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -58,6 +58,7 @@
     </SWOTraceHWSettings>
     <struct_types>
         <Fmt0>ETH_InitTypeDef-Speed	4	0</Fmt0>
+        <Fmt1>ip_addr_t-addr	4	0</Fmt1>
     </struct_types>
     <Trace2>
         <Enabled>0</Enabled>
