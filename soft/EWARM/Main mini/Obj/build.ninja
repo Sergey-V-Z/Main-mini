@@ -20,6 +20,22 @@ rule browsedata
 
 
 #Build steps
+build mb_m.pbi : index mb_m.xcl
+build mbcrc.pbi : index mbcrc.xcl
+build mbfunccoils_m.pbi : index mbfunccoils_m.xcl
+build mbfuncdiag.pbi : index mbfuncdiag.xcl
+build mbfuncdisc_m.pbi : index mbfuncdisc_m.xcl
+build mbfuncholding_m.pbi : index mbfuncholding_m.xcl
+build mbfuncinput_m.pbi : index mbfuncinput_m.xcl
+build mbfuncother.pbi : index mbfuncother.xcl
+build mbrtu.pbi : index mbrtu.xcl
+build mbrtu_m.pbi : index mbrtu_m.xcl
+build mbutils.pbi : index mbutils.xcl
+build portcritical.pbi : index portcritical.xcl
+build portevent_m.pbi : index portevent_m.xcl
+build portserial_m.pbi : index portserial_m.xcl
+build porttimer_m.pbi : index porttimer_m.xcl
+build user_mb_app_m.pbi : index user_mb_app_m.xcl
 build ethernetif.pbi : index ethernetif.xcl
 build freertos.pbi : index freertos.xcl
 build gpio.pbi : index gpio.xcl
@@ -29,6 +45,7 @@ build spi.pbi : index spi.xcl
 build stm32f4xx_hal_msp.pbi : index stm32f4xx_hal_msp.xcl
 build stm32f4xx_hal_timebase_tim.pbi : index stm32f4xx_hal_timebase_tim.xcl
 build stm32f4xx_it.pbi : index stm32f4xx_it.xcl
+build tim.pbi : index tim.xcl
 build usart.pbi : index usart.xcl
 build system_stm32f4xx.pbi : index system_stm32f4xx.xcl
 build stm32f4xx_hal.pbi : index stm32f4xx_hal.xcl
@@ -140,18 +157,19 @@ build upap.pbi : index upap.xcl
 build utils.pbi : index utils.xcl
 build vj.pbi : index vj.xcl
 build zepif.pbi : index zepif.xcl
-build Main$ mini_part0.pbi : link ethernetif.pbi freertos.pbi gpio.pbi lwip.pbi main.pbi spi.pbi stm32f4xx_hal_msp.pbi stm32f4xx_hal_timebase_tim.pbi stm32f4xx_it.pbi usart.pbi system_stm32f4xx.pbi
-build Main$ mini_part1.pbi : link stm32f4xx_hal.pbi stm32f4xx_hal_cortex.pbi stm32f4xx_hal_dma.pbi stm32f4xx_hal_dma_ex.pbi stm32f4xx_hal_eth.pbi stm32f4xx_hal_exti.pbi stm32f4xx_hal_flash.pbi stm32f4xx_hal_flash_ex.pbi stm32f4xx_hal_flash_ramfunc.pbi stm32f4xx_hal_gpio.pbi stm32f4xx_hal_pwr.pbi
-build Main$ mini_part2.pbi : link stm32f4xx_hal_pwr_ex.pbi stm32f4xx_hal_rcc.pbi stm32f4xx_hal_rcc_ex.pbi stm32f4xx_hal_spi.pbi stm32f4xx_hal_tim.pbi stm32f4xx_hal_tim_ex.pbi stm32f4xx_hal_uart.pbi cmsis_os.pbi croutine.pbi event_groups.pbi heap_4.pbi
-build Main$ mini_part3.pbi : link list.pbi port.pbi queue.pbi stream_buffer.pbi tasks.pbi timers.pbi altcp.pbi altcp_alloc.pbi altcp_tcp.pbi api_lib.pbi api_msg.pbi
-build Main$ mini_part4.pbi : link auth.pbi autoip.pbi bridgeif.pbi bridgeif_fdb.pbi ccp.pbi chap-md5.pbi chap-new.pbi chap_ms.pbi def.pbi demand.pbi dhcp.pbi
-build Main$ mini_part5.pbi : link dhcp6.pbi dns.pbi eap.pbi ecp.pbi err.pbi etharp.pbi ethernet.pbi ethip6.pbi eui64.pbi fsm.pbi icmp.pbi
-build Main$ mini_part6.pbi : link icmp6.pbi if_api.pbi igmp.pbi inet6.pbi inet_chksum.pbi init.pbi ip.pbi ip4.pbi ip4_addr.pbi ip4_frag.pbi ip6.pbi
-build Main$ mini_part7.pbi : link ip6_addr.pbi ip6_frag.pbi ipcp.pbi ipv6cp.pbi lcp.pbi lowpan6.pbi lowpan6_ble.pbi lowpan6_common.pbi magic.pbi mem.pbi memp.pbi
-build Main$ mini_part8.pbi : link mld6.pbi mppe.pbi mqtt.pbi multilink.pbi nd6.pbi netbuf.pbi netdb.pbi netif.pbi netifapi.pbi pbuf.pbi ppp.pbi
-build Main$ mini_part9.pbi : link pppapi.pbi pppcrypt.pbi pppoe.pbi pppol2tp.pbi pppos.pbi raw.pbi slipif.pbi sockets.pbi stats.pbi sys.pbi sys_arch.pbi
-build Main$ mini_part10.pbi : link tcp.pbi tcp_in.pbi tcp_out.pbi tcpip.pbi timeouts.pbi udp.pbi upap.pbi utils.pbi vj.pbi zepif.pbi
-build Main$ mini.pbd : link Main$ mini_part0.pbi Main$ mini_part1.pbi Main$ mini_part2.pbi Main$ mini_part3.pbi Main$ mini_part4.pbi Main$ mini_part5.pbi Main$ mini_part6.pbi Main$ mini_part7.pbi Main$ mini_part8.pbi Main$ mini_part9.pbi Main$ mini_part10.pbi
+build Main$ mini_part0.pbi : link mb_m.pbi mbcrc.pbi mbfunccoils_m.pbi mbfuncdiag.pbi mbfuncdisc_m.pbi mbfuncholding_m.pbi mbfuncinput_m.pbi mbfuncother.pbi mbrtu.pbi mbrtu_m.pbi mbutils.pbi portcritical.pbi
+build Main$ mini_part1.pbi : link portevent_m.pbi portserial_m.pbi porttimer_m.pbi user_mb_app_m.pbi ethernetif.pbi freertos.pbi gpio.pbi lwip.pbi main.pbi spi.pbi stm32f4xx_hal_msp.pbi stm32f4xx_hal_timebase_tim.pbi
+build Main$ mini_part2.pbi : link stm32f4xx_it.pbi tim.pbi usart.pbi system_stm32f4xx.pbi stm32f4xx_hal.pbi stm32f4xx_hal_cortex.pbi stm32f4xx_hal_dma.pbi stm32f4xx_hal_dma_ex.pbi stm32f4xx_hal_eth.pbi stm32f4xx_hal_exti.pbi stm32f4xx_hal_flash.pbi stm32f4xx_hal_flash_ex.pbi
+build Main$ mini_part3.pbi : link stm32f4xx_hal_flash_ramfunc.pbi stm32f4xx_hal_gpio.pbi stm32f4xx_hal_pwr.pbi stm32f4xx_hal_pwr_ex.pbi stm32f4xx_hal_rcc.pbi stm32f4xx_hal_rcc_ex.pbi stm32f4xx_hal_spi.pbi stm32f4xx_hal_tim.pbi stm32f4xx_hal_tim_ex.pbi stm32f4xx_hal_uart.pbi cmsis_os.pbi croutine.pbi
+build Main$ mini_part4.pbi : link event_groups.pbi heap_4.pbi list.pbi port.pbi queue.pbi stream_buffer.pbi tasks.pbi timers.pbi altcp.pbi altcp_alloc.pbi altcp_tcp.pbi api_lib.pbi
+build Main$ mini_part5.pbi : link api_msg.pbi auth.pbi autoip.pbi bridgeif.pbi bridgeif_fdb.pbi ccp.pbi chap-md5.pbi chap-new.pbi chap_ms.pbi def.pbi demand.pbi dhcp.pbi
+build Main$ mini_part6.pbi : link dhcp6.pbi dns.pbi eap.pbi ecp.pbi err.pbi etharp.pbi ethernet.pbi ethip6.pbi eui64.pbi fsm.pbi icmp.pbi icmp6.pbi
+build Main$ mini_part7.pbi : link if_api.pbi igmp.pbi inet6.pbi inet_chksum.pbi init.pbi ip.pbi ip4.pbi ip4_addr.pbi ip4_frag.pbi ip6.pbi ip6_addr.pbi ip6_frag.pbi
+build Main$ mini_part8.pbi : link ipcp.pbi ipv6cp.pbi lcp.pbi lowpan6.pbi lowpan6_ble.pbi lowpan6_common.pbi magic.pbi mem.pbi memp.pbi mld6.pbi mppe.pbi mqtt.pbi
+build Main$ mini_part9.pbi : link multilink.pbi nd6.pbi netbuf.pbi netdb.pbi netif.pbi netifapi.pbi pbuf.pbi ppp.pbi pppapi.pbi pppcrypt.pbi pppoe.pbi pppol2tp.pbi
+build Main$ mini_part10.pbi : link pppos.pbi raw.pbi slipif.pbi sockets.pbi stats.pbi sys.pbi sys_arch.pbi tcp.pbi tcp_in.pbi tcp_out.pbi tcpip.pbi timeouts.pbi
+build Main$ mini_part11.pbi : link udp.pbi upap.pbi utils.pbi vj.pbi zepif.pbi
+build Main$ mini.pbd : link Main$ mini_part0.pbi Main$ mini_part1.pbi Main$ mini_part2.pbi Main$ mini_part3.pbi Main$ mini_part4.pbi Main$ mini_part5.pbi Main$ mini_part6.pbi Main$ mini_part7.pbi Main$ mini_part8.pbi Main$ mini_part9.pbi Main$ mini_part10.pbi Main$ mini_part11.pbi
 build Main$ mini.pbw : browsedata Main$ mini.pbd
 
 

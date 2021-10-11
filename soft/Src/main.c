@@ -22,6 +22,7 @@
 #include "cmsis_os.h"
 #include "lwip.h"
 #include "spi.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -93,6 +94,8 @@ int main(void)
   MX_SPI3_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
+  MX_TIM13_Init();
+  MX_TIM14_Init();
   /* USER CODE BEGIN 2 */
 
   HAL_GPIO_WritePin(ETH_RST_GPIO_Port, ETH_RST_Pin, GPIO_PIN_RESET);
@@ -187,7 +190,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     HAL_IncTick();
   }
   /* USER CODE BEGIN Callback 1 */
-
+TIM_PeriodElapsedCallback(htim);
   /* USER CODE END Callback 1 */
 }
 

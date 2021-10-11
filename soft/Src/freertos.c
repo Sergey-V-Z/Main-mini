@@ -15,6 +15,7 @@
 *                             www.st.com/SLA0044
 *
 ******************************************************************************
+https://github.com/ADElectronics/STM32-FreeModbus-Example
 */
 /* USER CODE END Header */
 
@@ -31,11 +32,19 @@
 #include "lwip.h"
 #include "api.h"
 #include <string.h>
+#include "mb.h"
+#include "mbport.h"
+#include "user_mb_app_m.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+extern uint16_t usMRegInBuf[MB_MASTER_TOTAL_SLAVE_NUM][M_REG_INPUT_NREGS];
+extern BOOL xNeedPoll;
+extern UART_HandleTypeDef huart1;
+extern UART_HandleTypeDef huart2;
+extern TIM_HandleTypeDef htim13;
+extern TIM_HandleTypeDef htim14;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -237,13 +246,22 @@ void mainTask(void const * argument)
 /* USER CODE END Header_modbus1Task */
 void modbus1Task(void const * argument)
 {
-  /* USER CODE BEGIN modbus1Task */
-    /* Infinite loop */
-    for(;;)
+   /* USER CODE BEGIN modbus1Task */
+   eMBMasterInit( MB_RTU, &huart1, 115200, &htim13 );
+   eMBMasterEnable( );
+   xNeedPoll = TRUE;
+   /* Infinite loop */
+   for(;;)
+   {
+      eMBMasterPoll();
+      osDelay(1);
+      if(xNeedPoll)
       {
-        osDelay(1);
+         eMBMasterReqReadInputRegister(0xA, 0, 2, 2);
+         xNeedPoll = FALSE;
       }
-  /* USER CODE END modbus1Task */
+   }
+   /* USER CODE END modbus1Task */
 }
 
 /* USER CODE BEGIN Header_modbus2Task */

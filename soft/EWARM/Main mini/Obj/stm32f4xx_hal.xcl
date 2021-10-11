@@ -54,6 +54,22 @@ D:\Kicads Schem\Main-mini\soft\EWARM/../Middlewares/Third_Party/LwIP/system/arch
 -I
 D:\Kicads Schem\Main-mini\soft\EWARM/../Drivers/CMSIS/Include
 -I
+D:\Kicads Schem\Main-mini\soft\EWARM\..\Middlewares\Third_Party\FreeModbus
+-I
+D:\Kicads Schem\Main-mini\soft\EWARM\..\Middlewares\Third_Party\FreeModbus\tcp
+-I
+D:\Kicads Schem\Main-mini\soft\EWARM\..\Middlewares\Third_Party\FreeModbus\rtu
+-I
+D:\Kicads Schem\Main-mini\soft\EWARM\..\Middlewares\Third_Party\FreeModbus\port
+-I
+D:\Kicads Schem\Main-mini\soft\EWARM\..\Middlewares\Third_Party\FreeModbus\include
+-I
+D:\Kicads Schem\Main-mini\soft\EWARM\..\Middlewares\Third_Party\FreeModbus\functions
+-I
+D:\Kicads Schem\Main-mini\soft\EWARM\..\Middlewares\Third_Party\FreeModbus\ascii
+-I
+D:\Kicads Schem\Main-mini\soft\EWARM\..\Middlewares\Third_Party\FreeModbus\app
+-I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.4\arm\inc
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.4\arm\inc\c
@@ -101,6 +117,22 @@ D:\Kicads Schem\Main-mini\soft\Middlewares\Third_Party\LwIP\src\include\compat\s
 D:\Kicads Schem\Main-mini\soft\Middlewares\Third_Party\LwIP\system\arch
 -I
 D:\Kicads Schem\Main-mini\soft\Drivers\CMSIS\Include
+-I
+D:\Kicads Schem\Main-mini\soft\Middlewares\Third_Party\FreeModbus
+-I
+D:\Kicads Schem\Main-mini\soft\Middlewares\Third_Party\FreeModbus\tcp
+-I
+D:\Kicads Schem\Main-mini\soft\Middlewares\Third_Party\FreeModbus\rtu
+-I
+D:\Kicads Schem\Main-mini\soft\Middlewares\Third_Party\FreeModbus\port
+-I
+D:\Kicads Schem\Main-mini\soft\Middlewares\Third_Party\FreeModbus\include
+-I
+D:\Kicads Schem\Main-mini\soft\Middlewares\Third_Party\FreeModbus\functions
+-I
+D:\Kicads Schem\Main-mini\soft\Middlewares\Third_Party\FreeModbus\ascii
+-I
+D:\Kicads Schem\Main-mini\soft\Middlewares\Third_Party\FreeModbus\app
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0
