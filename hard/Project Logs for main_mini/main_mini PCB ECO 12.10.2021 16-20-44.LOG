@@ -1,0 +1,7 @@
+Change Component Comment : Designator=X2 Old Comment=SWD New Comment=PLS-5
+Added Pin To Net: NetName=NetC1_1_1 Pin=C5_1-1
+Added Pin To Net: NetName=NetC1_2_1 Pin=C5_2-1
+Added Pin To Net: NetName=NetC1_1_1 Pin=ISO1_1-9
+Added Pin To Net: NetName=NetC1_1_1 Pin=ISO1_1-15
+Added Pin To Net: NetName=NetC1_2_1 Pin=ISO1_2-9
+Added Pin To Net: NetName=NetC1_2_1 Pin=ISO1_2-15

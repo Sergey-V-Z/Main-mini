@@ -246,7 +246,7 @@ void mainTask(void const * argument)
 /* USER CODE END Header_modbus1Task */
 void modbus1Task(void const * argument)
 {
-   /* USER CODE BEGIN modbus1Task */
+  /* USER CODE BEGIN modbus1Task */
    eMBMasterInit( MB_RTU, &huart1, 115200, &htim13 );
    eMBMasterEnable( );
    xNeedPoll = TRUE;
@@ -261,7 +261,7 @@ void modbus1Task(void const * argument)
          xNeedPoll = FALSE;
       }
    }
-   /* USER CODE END modbus1Task */
+  /* USER CODE END modbus1Task */
 }
 
 /* USER CODE BEGIN Header_modbus2Task */

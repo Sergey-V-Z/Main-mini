@@ -12,7 +12,7 @@
         <ByteLimit>50</ByteLimit>
     </Stack>
     <StLinkDriver>
-        <stlinkserialNo>42510187</stlinkserialNo>
+        <stlinkserialNo>434B4E00</stlinkserialNo>
         <stlinkfoundProbes />
         <stlinkResetStyle>0</stlinkResetStyle>
         <stlinkResetStrategy>2</stlinkResetStrategy>
@@ -20,7 +20,7 @@
         <LeaveTargetRunning>_ 0</LeaveTargetRunning>
     </StLinkDriver>
     <DebugChecksum>
-        <Checksum>75787929</Checksum>
+        <Checksum>4008027802</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -56,6 +56,9 @@
         <ITMportsLogFile>0</ITMportsLogFile>
         <ITMlogFile>$PROJ_DIR$\ITM.log</ITMlogFile>
     </SWOTraceHWSettings>
+    <Registers>
+        <regBase0>USART1_BRR 10</regBase0>
+    </Registers>
     <struct_types>
         <Fmt0>ETH_InitTypeDef-Speed	4	0</Fmt0>
         <Fmt1>ip_addr_t-addr	4	0</Fmt1>

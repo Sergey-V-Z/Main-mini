@@ -9,8 +9,8 @@ UART_HandleTypeDef *uart;
 static uint8_t singlechar;
 
 /* ----------------------- User defenitions ---------------------------------*/
-#define RS485_MASTER_RTS_LOW	HAL_GPIO_WritePin(RS485_RTS_GPIO_Port, RS485_RTS_Pin, GPIO_PIN_RESET)
-#define RS485_MASTER_RTS_HIGH 	HAL_GPIO_WritePin(RS485_RTS_GPIO_Port, RS485_RTS_Pin, GPIO_PIN_SET)
+#define RS485_MASTER_RTS_LOW	HAL_GPIO_WritePin(DE1_GPIO_Port, DE1_Pin, GPIO_PIN_RESET)
+#define RS485_MASTER_RTS_HIGH 	HAL_GPIO_WritePin(DE1_GPIO_Port, DE1_Pin, GPIO_PIN_SET)
 
 /* ----------------------- Start implementation -----------------------------*/
 
@@ -25,7 +25,7 @@ void vMBMasterPortSerialEnable(BOOL xRxEnable, BOOL xTxEnable)
 {
 	if(xRxEnable)
 	{
-		//RS485_MASTER_RTS_LOW;
+		RS485_MASTER_RTS_LOW;
 		HAL_UART_Receive_IT(uart, &singlechar, 1);
 	}	
 	else
@@ -35,7 +35,7 @@ void vMBMasterPortSerialEnable(BOOL xRxEnable, BOOL xTxEnable)
 
 	if(xTxEnable)
 	{
-		//RS485_MASTER_RTS_HIGH;
+		RS485_MASTER_RTS_HIGH;
 		pxMBMasterFrameCBTransmitterEmpty();
 	}
 	else

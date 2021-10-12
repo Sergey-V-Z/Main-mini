@@ -110,4 +110,16 @@ main.pbi: D:\Kicads\ Schem\Main-mini\soft\Src\main.c \
   D:\Kicads\ Schem\Main-mini\soft\EWARM/../Inc\spi.h \
   D:\Kicads\ Schem\Main-mini\soft\EWARM/../Inc\tim.h \
   D:\Kicads\ Schem\Main-mini\soft\EWARM/../Inc\usart.h \
-  D:\Kicads\ Schem\Main-mini\soft\EWARM/../Inc\gpio.h
+  D:\Kicads\ Schem\Main-mini\soft\EWARM/../Inc\gpio.h \
+  D:\Kicads\ Schem\Main-mini\soft\EWARM\..\Middlewares\Third_Party\FreeModbus\include\mb.h \
+  D:\Kicads\ Schem\Main-mini\soft\EWARM\..\Middlewares\Third_Party\FreeModbus\port\port.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\assert.h \
+  D:\Kicads\ Schem\Main-mini\soft\EWARM\..\Middlewares\Third_Party\FreeModbus\include\mbconfig.h \
+  D:\Kicads\ Schem\Main-mini\soft\EWARM\..\Middlewares\Third_Party\FreeModbus\port/portcritical.h \
+  D:\Kicads\ Schem\Main-mini\soft\EWARM\..\Middlewares\Third_Party\FreeModbus\include/mbport.h \
+  D:\Kicads\ Schem\Main-mini\soft\EWARM\..\Middlewares\Third_Party\FreeModbus\include/mbproto.h \
+  D:\Kicads\ Schem\Main-mini\soft\EWARM\..\Middlewares\Third_Party\FreeModbus\include\mbport.h \
+  D:\Kicads\ Schem\Main-mini\soft\EWARM\..\Middlewares\Third_Party\FreeModbus\app\user_mb_app_m.h \
+  D:\Kicads\ Schem\Main-mini\soft\EWARM\..\Middlewares\Third_Party\FreeModbus\include\mb_m.h \
+  D:\Kicads\ Schem\Main-mini\soft\EWARM\..\Middlewares\Third_Party\FreeModbus\include\mbframe.h \
+  D:\Kicads\ Schem\Main-mini\soft\EWARM\..\Middlewares\Third_Party\FreeModbus\include\mbutils.h
