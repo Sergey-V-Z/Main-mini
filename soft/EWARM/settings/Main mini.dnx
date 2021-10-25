@@ -20,7 +20,7 @@
         <LeaveTargetRunning>_ 0</LeaveTargetRunning>
     </StLinkDriver>
     <DebugChecksum>
-        <Checksum>2079417954</Checksum>
+        <Checksum>26576582</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -150,8 +150,9 @@
         <A10>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.c" ""</A10>
         <A11>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_uart.c" ""</A11>
         <A12>_ "D:\Radio\Jobe\Main mini\soft\EWARM\startup_stm32f437xx.s" "D:\Kicads Schem\Main-mini\soft\EWARM\startup_stm32f437xx.s"</A12>
-        <A13>_ "D:\Radio\Jobe\Main mini\soft\Middlewares\Third_Party\FreeRTOS\Source\tasks.c" ""</A13>
-        <Count>14</Count>
+        <A13>_ "D:\Radio\Jobe\Main mini\soft\Middlewares\Third_Party\FreeModbus\app\user_mb_app_m.c" "D:\Kicads Schem\Main-mini\soft\Middlewares\Third_Party\FreeModbus\app\user_mb_app_m.c"</A13>
+        <A14>_ "D:\Radio\Jobe\Main mini\soft\Middlewares\Third_Party\FreeRTOS\Source\tasks.c" ""</A14>
+        <Count>15</Count>
         <SuppressDialog>0</SuppressDialog>
     </Aliases>
 </settings>

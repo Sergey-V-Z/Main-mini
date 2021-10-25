@@ -63,6 +63,8 @@ extern TIM_HandleTypeDef htim14;
 
 //eth
 extern struct netif gnetif;
+char *pIP;
+uint32_t ip = 0;
 
 /* USER CODE END Variables */
 osThreadId MainTaskHandle;
@@ -309,6 +311,11 @@ void tcp_server(void const * argument)
   for(;;)
   {
     while(gnetif.ip_addr.addr == 0) osDelay(10);
+    
+    if((gnetif.ip_addr.addr != 0) && (gnetif.ip_addr.addr != ip)){
+       ip = gnetif.ip_addr.addr;       
+       pIP = ip4addr_ntoa(&gnetif.ip_addr);
+    }
      
      conn = netconn_new(NETCONN_TCP);
      if (conn!=NULL)
