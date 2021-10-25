@@ -19,10 +19,10 @@
 #define M_REG_INPUT_NREGS             2//100
 
 #define M_REG_HOLDING_START           0
-#define M_REG_HOLDING_NREGS           0//100
+#define M_REG_HOLDING_NREGS           20//100
 
 /* master mode: holding register's all address */
-#define          M_HD_RESERVE                     0
+#define          M_HD_RESERVE                     20
 /* master mode: input register's all address */
 #define          M_IN_RESERVE                     0
 /* master mode: coil's all address */

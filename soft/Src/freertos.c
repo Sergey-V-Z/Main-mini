@@ -40,6 +40,7 @@ https://github.com/ADElectronics/STM32-FreeModbus-Example
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 extern uint16_t usMRegInBuf[MB_MASTER_TOTAL_SLAVE_NUM][M_REG_INPUT_NREGS];
+eMBMasterReqErrCode req_M;
 extern BOOL xNeedPoll;
 extern UART_HandleTypeDef huart1;
 extern UART_HandleTypeDef huart2;
@@ -257,7 +258,7 @@ void modbus1Task(void const * argument)
       osDelay(1);
       if(xNeedPoll)
       {
-         eMBMasterReqReadInputRegister(0xA, 0, 2, 2);
+         req_M = eMBMasterReqReadHoldingRegister(0x03, 0, 2, 2);
          xNeedPoll = FALSE;
       }
    }

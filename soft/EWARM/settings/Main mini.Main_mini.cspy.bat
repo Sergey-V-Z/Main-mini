@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.4\common\bin\cspybat" -f "D:\Kicads Schem\Main-mini\soft\EWARM\settings\Main mini.Main_mini.general.xcl" --backend -f "D:\Kicads Schem\Main-mini\soft\EWARM\settings\Main mini.Main_mini.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "D:\Radio\Jobe\Main mini\soft\EWARM\settings\Main mini.Main_mini.general.xcl" --backend -f "D:\Radio\Jobe\Main mini\soft\EWARM\settings\Main mini.Main_mini.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.4\common\bin\cspybat" -f "D:\Kicads Schem\Main-mini\soft\EWARM\settings\Main mini.Main_mini.general.xcl" "--debug_file=%~1" --backend -f "D:\Kicads Schem\Main-mini\soft\EWARM\settings\Main mini.Main_mini.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "D:\Radio\Jobe\Main mini\soft\EWARM\settings\Main mini.Main_mini.general.xcl" "--debug_file=%~1" --backend -f "D:\Radio\Jobe\Main mini\soft\EWARM\settings\Main mini.Main_mini.driver.xcl" 
 
 @echo off 
 :end

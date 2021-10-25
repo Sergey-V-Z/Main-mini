@@ -12,7 +12,7 @@
         <ByteLimit>50</ByteLimit>
     </Stack>
     <StLinkDriver>
-        <stlinkserialNo>434B4E00</stlinkserialNo>
+        <stlinkserialNo>42510187</stlinkserialNo>
         <stlinkfoundProbes />
         <stlinkResetStyle>0</stlinkResetStyle>
         <stlinkResetStrategy>2</stlinkResetStrategy>
@@ -20,7 +20,7 @@
         <LeaveTargetRunning>_ 0</LeaveTargetRunning>
     </StLinkDriver>
     <DebugChecksum>
-        <Checksum>4008027802</Checksum>
+        <Checksum>2079417954</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -137,20 +137,21 @@
         <Count>0</Count>
     </Breakpoints2>
     <Aliases>
-        <A0>_ "D:\Radio\Jobe\Main mini\soft\Drivers\CMSIS\Include\core_cm4.h" ""</A0>
-        <A1>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c" ""</A1>
-        <A2>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.c" ""</A2>
-        <A3>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_eth.c" ""</A3>
-        <A4>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.c" ""</A4>
-        <A5>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr_ex.c" ""</A5>
-        <A6>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.c" ""</A6>
-        <A7>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_spi.c" ""</A7>
-        <A8>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.c" ""</A8>
-        <A9>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.c" ""</A9>
-        <A10>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_uart.c" ""</A10>
-        <A11>_ "D:\Radio\Jobe\Main mini\soft\EWARM\startup_stm32f437xx.s" "D:\Kicads Schem\Main-mini\soft\EWARM\startup_stm32f437xx.s"</A11>
-        <A12>_ "D:\Radio\Jobe\Main mini\soft\Middlewares\Third_Party\FreeRTOS\Source\tasks.c" ""</A12>
-        <Count>13</Count>
+        <A0>_ "D:\Kicads Schem\Main-mini\soft\Src\stm32f4xx_it.c" "D:\Radio\Jobe\Main mini\soft\Src\stm32f4xx_it.c"</A0>
+        <A1>_ "D:\Radio\Jobe\Main mini\soft\Drivers\CMSIS\Include\core_cm4.h" ""</A1>
+        <A2>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c" ""</A2>
+        <A3>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.c" ""</A3>
+        <A4>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_eth.c" ""</A4>
+        <A5>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.c" ""</A5>
+        <A6>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr_ex.c" ""</A6>
+        <A7>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.c" ""</A7>
+        <A8>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_spi.c" ""</A8>
+        <A9>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.c" ""</A9>
+        <A10>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.c" ""</A10>
+        <A11>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_uart.c" ""</A11>
+        <A12>_ "D:\Radio\Jobe\Main mini\soft\EWARM\startup_stm32f437xx.s" "D:\Kicads Schem\Main-mini\soft\EWARM\startup_stm32f437xx.s"</A12>
+        <A13>_ "D:\Radio\Jobe\Main mini\soft\Middlewares\Third_Party\FreeRTOS\Source\tasks.c" ""</A13>
+        <Count>14</Count>
         <SuppressDialog>0</SuppressDialog>
     </Aliases>
 </settings>
