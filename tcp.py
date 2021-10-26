@@ -1,7 +1,7 @@
 from socket import *
 import sys
 
-host = '192.168.0.6'
+host = '192.168.20.130'
 port = 81
 addr = (host, port)
 
@@ -16,6 +16,10 @@ if not data :
 
 #encode - перекодирует введенные данные в байты, decode - обратно
 data = str.encode(data)
+n=1
+#data = int(data)
+# конвертация числа в тип bytes (2 байта)
+data = n.to_bytes(2, byteorder='big')
 tcp_socket.send(data)
 data = bytes.decode(data)
 data = tcp_socket.recv(1024)

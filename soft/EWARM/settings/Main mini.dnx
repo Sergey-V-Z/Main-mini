@@ -27,8 +27,8 @@
         <StopOnThrow>_ 0</StopOnThrow>
     </Exceptions>
     <Disassembly>
-        <MixedMode>1</MixedMode>
         <InstrCount>0</InstrCount>
+        <MixedMode>1</MixedMode>
     </Disassembly>
     <CodeCoverage>
         <Enabled>0</Enabled>
@@ -138,22 +138,23 @@
         <Count>1</Count>
     </Breakpoints2>
     <Aliases>
-        <A0>_ "D:\Kicads Schem\Main-mini\soft\Src\stm32f4xx_it.c" "D:\Radio\Jobe\Main mini\soft\Src\stm32f4xx_it.c"</A0>
-        <A1>_ "D:\Radio\Jobe\Main mini\soft\Drivers\CMSIS\Include\core_cm4.h" ""</A1>
-        <A2>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c" ""</A2>
-        <A3>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.c" ""</A3>
-        <A4>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_eth.c" ""</A4>
-        <A5>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.c" ""</A5>
-        <A6>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr_ex.c" ""</A6>
-        <A7>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.c" ""</A7>
-        <A8>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_spi.c" ""</A8>
-        <A9>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.c" ""</A9>
-        <A10>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.c" ""</A10>
-        <A11>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_uart.c" ""</A11>
-        <A12>_ "D:\Radio\Jobe\Main mini\soft\EWARM\startup_stm32f437xx.s" "D:\Kicads Schem\Main-mini\soft\EWARM\startup_stm32f437xx.s"</A12>
-        <A13>_ "D:\Radio\Jobe\Main mini\soft\Middlewares\Third_Party\FreeModbus\app\user_mb_app_m.c" "D:\Kicads Schem\Main-mini\soft\Middlewares\Third_Party\FreeModbus\app\user_mb_app_m.c"</A13>
-        <A14>_ "D:\Radio\Jobe\Main mini\soft\Middlewares\Third_Party\FreeRTOS\Source\tasks.c" ""</A14>
-        <Count>15</Count>
+        <A0>_ "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\arm\inc\c\DLib_Product_string.h" ""</A0>
+        <A1>_ "D:\Kicads Schem\Main-mini\soft\Src\stm32f4xx_it.c" "D:\Radio\Jobe\Main mini\soft\Src\stm32f4xx_it.c"</A1>
+        <A2>_ "D:\Radio\Jobe\Main mini\soft\Drivers\CMSIS\Include\core_cm4.h" ""</A2>
+        <A3>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c" ""</A3>
+        <A4>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.c" ""</A4>
+        <A5>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_eth.c" ""</A5>
+        <A6>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.c" ""</A6>
+        <A7>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr_ex.c" ""</A7>
+        <A8>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.c" ""</A8>
+        <A9>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_spi.c" ""</A9>
+        <A10>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.c" ""</A10>
+        <A11>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.c" ""</A11>
+        <A12>_ "D:\Radio\Jobe\Main mini\soft\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_uart.c" ""</A12>
+        <A13>_ "D:\Radio\Jobe\Main mini\soft\EWARM\startup_stm32f437xx.s" "D:\Kicads Schem\Main-mini\soft\EWARM\startup_stm32f437xx.s"</A13>
+        <A14>_ "D:\Radio\Jobe\Main mini\soft\Middlewares\Third_Party\FreeModbus\app\user_mb_app_m.c" "D:\Kicads Schem\Main-mini\soft\Middlewares\Third_Party\FreeModbus\app\user_mb_app_m.c"</A14>
+        <A15>_ "D:\Radio\Jobe\Main mini\soft\Middlewares\Third_Party\FreeRTOS\Source\tasks.c" ""</A15>
+        <Count>16</Count>
         <SuppressDialog>0</SuppressDialog>
     </Aliases>
 </settings>
