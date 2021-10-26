@@ -258,11 +258,11 @@ void modbus1Task(void const * argument)
    {
       eMBMasterPoll();
       osDelay(1);
-      if(xNeedPoll)
-      {
-         req_M = eMBMasterReqReadHoldingRegister(0x03, 0, 2, 2);
-         xNeedPoll = FALSE;
-      }
+//      if(xNeedPoll)
+//      {
+//         req_M = eMBMasterReqReadHoldingRegister(0x03, 0, 2, 2);
+//         xNeedPoll = FALSE;
+//      }
    }
   /* USER CODE END modbus1Task */
 }
@@ -335,6 +335,41 @@ void tcp_server(void const * argument)
                     {
                        netbuf_data(buf,&in_data,&data_size);//get pointer and data size of the buffer
                        memcpy((void*)input_data,in_data,data_size);
+                       
+                       switch(input_data[0])
+                       {
+                         case 1: // read
+                         {
+                           for(int i = 2; i < input_data[1]; ++i)//отправить запросы в 485
+                             {
+                               while(!xNeedPoll)
+                                 {}
+                               req_M = eMBMasterReqReadHoldingRegister(input_data[i], input_data[input_data[1]+1], 1, 2);
+                               xNeedPoll = FALSE;                             
+                             }
+                           break;
+                         }
+                         case 2: // write
+                         {
+                           
+                           for(int i = 3; i < input_data[1]*2; ++i)//отправить запросы в 485
+                             {
+                               while(!xNeedPoll)
+                                 {}
+                               req_M = eMBMasterReqWriteHoldingRegister(input_data[i], input_data[2], input_data[i+1], 2);
+                               xNeedPoll = FALSE;
+                               ++i;
+                             }                           
+                           break;
+                         }
+                         default:
+                         {
+                           netconn_write(newconn,0,1,NETCONN_COPY);
+                           break;
+                         }
+                         
+                       }
+
                        netconn_write(newconn,response,100,NETCONN_COPY);
                        __ASM("NOP");
                     } while (netbuf_next(buf) >= 0);
