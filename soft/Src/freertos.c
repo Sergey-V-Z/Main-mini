@@ -40,6 +40,7 @@ https://github.com/ADElectronics/STM32-FreeModbus-Example
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 extern uint16_t usMRegInBuf[MB_MASTER_TOTAL_SLAVE_NUM][M_REG_INPUT_NREGS];
+extern uint16_t   usMRegHoldBuf[MB_MASTER_TOTAL_SLAVE_NUM][M_REG_HOLDING_NREGS];
 eMBMasterReqErrCode req_M;
 extern BOOL xNeedPoll;
 extern UART_HandleTypeDef huart1;
@@ -63,14 +64,20 @@ extern TIM_HandleTypeDef htim14;
 
 //eth
 extern struct netif gnetif;
-char *pIP;
-uint32_t ip = 0;
+char            *pIP;
+uint32_t        ip = 0;
+
+//хранит команду из TCP
+uint8_t         input_data[100] = {0};
+uint8_t 		response[100] = {0};
 
 /* USER CODE END Variables */
 osThreadId MainTaskHandle;
 osThreadId ModBus1TaskHandle;
 osThreadId ModBus2TaskHandle;
 osThreadId TCP_ServerHandle;
+osSemaphoreId InDataTCPHandle;
+osSemaphoreId ModBusEndHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -114,6 +121,15 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
   /* USER CODE END RTOS_MUTEX */
+
+  /* Create the semaphores(s) */
+  /* definition and creation of InDataTCP */
+  osSemaphoreDef(InDataTCP);
+  InDataTCPHandle = osSemaphoreCreate(osSemaphore(InDataTCP), 1);
+
+  /* definition and creation of ModBusEnd */
+  osSemaphoreDef(ModBusEnd);
+  ModBusEndHandle = osSemaphoreCreate(osSemaphore(ModBusEnd), 1);
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
   /* add semaphores, ... */
@@ -253,6 +269,8 @@ void modbus1Task(void const * argument)
    eMBMasterInit( MB_RTU, &huart1, 115200, &htim13 );
    eMBMasterEnable( );
    xNeedPoll = TRUE;
+   osSemaphoreWait(InDataTCPHandle,1);
+   int32_t SemRet = 0;
    /* Infinite loop */
    for(;;)
    {
@@ -262,7 +280,59 @@ void modbus1Task(void const * argument)
 //      {
 //         req_M = eMBMasterReqReadHoldingRegister(0x03, 0, 2, 2);
 //         xNeedPoll = FALSE;
-//      }
+//      } 
+      //ждем симафора
+      SemRet = osSemaphoreWait(InDataTCPHandle,1);
+      if(SemRet != osErrorOS)
+      {
+         switch(input_data[0])
+         {
+           case 1: // read
+            {
+               for(int i = 3, a = 0; a < input_data[1]; ++i, ++a)//отправить запросы в 485
+               {
+                  while(!xNeedPoll)
+                  {}                                    //UCHAR ucSndAddr, USHORT usRegAddr, USHORT usNRegs, LONG lTimeOut
+                  req_M = eMBMasterReqReadHoldingRegister(input_data[i], input_data[2], 1, 2);
+                  xNeedPoll = FALSE;  
+               }
+//               for(int i = 0; i < input_data[1]; ++i)// сохранить в буфер отправки ответы 
+//               {
+//                  
+//               }  
+               while(eMBMasterWaitRequestFinish != )
+               {}
+               //выдать симафор 
+               osSemaphoreRelease(ModBusEndHandle);
+               break;
+            }
+           case 2: // write
+            {
+               
+               for(int i = 3; i < input_data[1]*2; ++i)//отправить запросы в 485
+               {
+                  while(!xNeedPoll)
+                  {}
+                  req_M = eMBMasterReqWriteHoldingRegister(input_data[i], input_data[2], input_data[i+1], 2);
+                  xNeedPoll = FALSE;
+                  ++i;
+                  // сохранить в буфер отправки ответы req_M
+               }    
+               while(!xNeedPoll)
+               {}
+               //выдать симафор 
+               osSemaphoreRelease(ModBusEndHandle);
+               break;
+            }
+           default:
+            {
+               //netconn_write(newconn,0,1,NETCONN_COPY);
+               break;
+            }
+            
+         }
+      }
+      
    }
   /* USER CODE END modbus1Task */
 }
@@ -302,10 +372,10 @@ void tcp_server(void const * argument)
    struct netconn 	connection , newconnection;
    struct netbuf 	*buf = &buffer; //bufferized input data
    struct netconn 	*conn = &connection, *newconn = &newconnection; //contains info about connection inc. type, port, buf pointers etc.
-   uint8_t 		input_data[100] = {0};
    void 		*in_data = NULL;
    uint16_t 		data_size = 0;
-   uint8_t 		response[100] = "123";
+   osSemaphoreWait(ModBusEndHandle,1000);
+   int32_t SemRet = 0;
    //sizeH = xPortGetMinimumEverFreeHeapSize();
   /* Infinite loop */
   for(;;)
@@ -336,41 +406,24 @@ void tcp_server(void const * argument)
                        netbuf_data(buf,&in_data,&data_size);//get pointer and data size of the buffer
                        memcpy((void*)input_data,in_data,data_size);
                        
-                       switch(input_data[0])
-                       {
-                         case 1: // read
+                       //выдать симафор для modbus
+                       osSemaphoreRelease(InDataTCPHandle);
+                       
+                       // ожидание симафора
+                      SemRet = osSemaphoreWait(ModBusEndHandle,1000);
+                       //проверить если семафор не пришел то вернуть ощибку
+                      if(SemRet != 0)
+                      {
+                         response[0] = -1;
+                         xNeedPoll = TRUE;
+                      }else{
+                         //обработать данные из modbus
+                         for(volatile int i = 3, a = 0; a < input_data[1]; ++i, ++a)
                          {
-                           for(int i = 2; i < input_data[1]; ++i)//отправить запросы в 485
-                             {
-                               while(!xNeedPoll)
-                                 {}
-                               req_M = eMBMasterReqReadHoldingRegister(input_data[i], input_data[input_data[1]+1], 1, 2);
-                               xNeedPoll = FALSE;                             
-                             }
-                           break;
+                            response[a+1] = (uint8_t)(usMRegHoldBuf[input_data[i]-1][input_data[2]]);
                          }
-                         case 2: // write
-                         {
-                           
-                           for(int i = 3; i < input_data[1]*2; ++i)//отправить запросы в 485
-                             {
-                               while(!xNeedPoll)
-                                 {}
-                               req_M = eMBMasterReqWriteHoldingRegister(input_data[i], input_data[2], input_data[i+1], 2);
-                               xNeedPoll = FALSE;
-                               ++i;
-                             }                           
-                           break;
-                         }
-                         default:
-                         {
-                           netconn_write(newconn,0,1,NETCONN_COPY);
-                           break;
-                         }
-                         
-                       }
-
-                       netconn_write(newconn,response,100,NETCONN_COPY);
+                      }
+                       netconn_write(newconn,response,input_data[1]+1,NETCONN_COPY);
                        __ASM("NOP");
                     } while (netbuf_next(buf) >= 0);
                     netbuf_delete(buf);

@@ -2,8 +2,9 @@
 ETH.IPParameters=MediaInterface,PhyAddress
 ETH.MediaInterface=ETH_MEDIA_INTERFACE_RMII
 ETH.PhyAddress=0
+FREERTOS.BinarySemaphores01=InDataTCP,Dynamic,NULL;ModBusEnd,Dynamic,NULL
 FREERTOS.FootprintOK=true
-FREERTOS.IPParameters=Tasks01,FootprintOK,configTOTAL_HEAP_SIZE
+FREERTOS.IPParameters=Tasks01,FootprintOK,configTOTAL_HEAP_SIZE,BinarySemaphores01
 FREERTOS.Tasks01=MainTask,-2,256,mainTask,Default,NULL,Dynamic,NULL,NULL;ModBus1Task,-2,256,modbus1Task,Default,NULL,Dynamic,NULL,NULL;ModBus2Task,-2,256,modbus2Task,Default,NULL,Dynamic,NULL,NULL;TCP_Server,-2,256,tcp_server,Default,NULL,Dynamic,NULL,NULL
 FREERTOS.configTOTAL_HEAP_SIZE=100000
 File.Version=6
