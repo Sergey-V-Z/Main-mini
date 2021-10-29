@@ -20,7 +20,7 @@
         <LeaveTargetRunning>_ 0</LeaveTargetRunning>
     </StLinkDriver>
     <DebugChecksum>
-        <Checksum>1781728297</Checksum>
+        <Checksum>566198996</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -137,7 +137,8 @@
         <mode>0</mode>
     </DisassembleMode>
     <Breakpoints2>
-        <Count>0</Count>
+        <Bp0>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Middlewares\Third_Party\FreeModbus\port\portevent_m.c}.146.2" 0 0 1 "" 0 "" 0</Bp0>
+        <Count>1</Count>
     </Breakpoints2>
     <Aliases>
         <A0>_ "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\arm\inc\c\DLib_Product_string.h" ""</A0>
