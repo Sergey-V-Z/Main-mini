@@ -1,5 +1,12 @@
 
 #include "user_mb_app_m.h"
+#include "FreeRTOS.h"
+#include "task.h"
+#include "main.h"
+#include "cmsis_os.h"
+
+//Переменные
+extern osSemaphoreId ModBusEndHandle;
 
 #if (MB_MASTER_ASCII_ENABLED > 0 || MB_MASTER_RTU_ENABLED > 0 || MB_MASTER_TCP_ENABLED > 0)
 /*-----------------------Master mode use these variables----------------------*/
@@ -145,10 +152,13 @@ eMBErrorCode eMBMasterRegHoldingCB(UCHAR * pucRegBuffer, USHORT usAddress, USHOR
     {
         eStatus = MB_ENOREG;
     }
+    //выдать симафор 
+    osSemaphoreRelease(ModBusEndHandle);
     return eStatus;
 #else
 	return MB_ENOREG;
 #endif
+
 }
 
 /**

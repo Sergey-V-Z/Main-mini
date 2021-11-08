@@ -301,11 +301,11 @@ void modbus1Task(void const * argument)
 //               {
 //                  
 //               }  
-               req_M = eMBMasterWaitRequestFinish();
-               while(eMBMasterWaitRequestFinish() != MB_MRE_NO_ERR)
-               {}
+//               req_M = eMBMasterWaitRequestFinish();
+//               while(eMBMasterWaitRequestFinish() != MB_MRE_NO_ERR)
+//               {}
                //выдать симафор 
-               osSemaphoreRelease(ModBusEndHandle);
+//               osSemaphoreRelease(ModBusEndHandle);
                break;
             }
            case 2: // write
