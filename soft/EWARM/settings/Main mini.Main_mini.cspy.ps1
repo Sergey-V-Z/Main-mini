@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.4\common\bin\cspybat" -f "D:\Kicads Schem\Main-mini\soft\EWARM\settings\Main mini.Main_mini.general.xcl" --backend -f "D:\Kicads Schem\Main-mini\soft\EWARM\settings\Main mini.Main_mini.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "D:\Radio\Jobe\Main mini\soft\EWARM\settings\Main mini.Main_mini.general.xcl" --backend -f "D:\Radio\Jobe\Main mini\soft\EWARM\settings\Main mini.Main_mini.driver.xcl" 
 }
 else
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.4\common\bin\cspybat" -f "D:\Kicads Schem\Main-mini\soft\EWARM\settings\Main mini.Main_mini.general.xcl" --debug_file=$debugfile --backend -f "D:\Kicads Schem\Main-mini\soft\EWARM\settings\Main mini.Main_mini.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "D:\Radio\Jobe\Main mini\soft\EWARM\settings\Main mini.Main_mini.general.xcl" --debug_file=$debugfile --backend -f "D:\Radio\Jobe\Main mini\soft\EWARM\settings\Main mini.Main_mini.driver.xcl" 
 }

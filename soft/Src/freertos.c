@@ -320,10 +320,10 @@ void modbus1Task(void const * argument)
                   ++i;
                   // сохранить в буфер отправки ответы req_M
                }    
-               while(!xNeedPoll)
-               {}
-               //выдать симафор 
-               osSemaphoreRelease(ModBusEndHandle);
+//               while(!xNeedPoll)
+//               {}
+//               //выдать симафор 
+//               osSemaphoreRelease(ModBusEndHandle);
                break;
             }
            default:
