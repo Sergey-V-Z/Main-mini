@@ -310,12 +310,15 @@ void modbus1Task(void const * argument)
             }
            case 2: // write
             {
-               
-               for(int i = 3; i < input_data[1]*2; ++i)//отправить запросы в 485
+               USHORT temp = 0;
+               for(int i = 0, a = 3; i < input_data[1]; ++i, a+=3)//отправить запросы в 485
                {
-                  while(!xNeedPoll)
-                  {}
-                  req_M = eMBMasterReqWriteHoldingRegister(input_data[i], input_data[2], input_data[i+1], 2);
+                  while(!xNeedPoll){}                             
+                  
+                  temp = temp | (input_data[a+1] << 8);
+                  temp = temp | input_data[a+2];
+                                                      //HAR ucSndAddr, USHORT usRegAddr, USHORT usRegData, LONG lTimeOut
+                  req_M = eMBMasterReqWriteHoldingRegister(input_data[a], input_data[2], temp, 2);
                   xNeedPoll = FALSE;
                   ++i;
                   // сохранить в буфер отправки ответы req_M
@@ -412,20 +415,25 @@ void tcp_server(void const * argument)
                        osSemaphoreRelease(InDataTCPHandle);
                        
                        // ожидание симафора
-                      SemRet = osSemaphoreWait(ModBusEndHandle,1000);
+                      SemRet = osSemaphoreWait(ModBusEndHandle,100);
+                      int a = 1;
                        //проверить если семафор не пришел то вернуть ощибку
                       if(SemRet != 0)
                       {
                          response[0] = -1;
                          xNeedPoll = TRUE;
                       }else{
+                         response[0] = 0;
                          //обработать данные из modbus
-                         for(volatile int i = 3, a = 0; a < input_data[1]; ++i, ++a)
+                        
+                         for(volatile int i = 3; a < input_data[1]; ++i, ++a)
                          {
-                            response[a+1] = (uint8_t)(usMRegHoldBuf[input_data[i]-1][input_data[2]]);
+//                            response[a] = (uint8_t)(usMRegHoldBuf[input_data[i]-1][input_data[2]]);
+//                            response[a+1] = (uint8_t)(usMRegHoldBuf[input_data[i]-1][input_data[2]]);
+                            (*((short *)(&(response[a]))))=(usMRegHoldBuf[input_data[i]-1][input_data[2]]);
                          }
                       }
-                       netconn_write(newconn,response,input_data[1]+1,NETCONN_COPY);
+                       netconn_write(newconn,response,((a*2)+1),NETCONN_COPY);
                        __ASM("NOP");
                     } while (netbuf_next(buf) >= 0);
                     netbuf_delete(buf);
