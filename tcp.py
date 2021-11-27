@@ -2,7 +2,7 @@ from socket import *
 import sys
 
 # Адрес центральной платы
-host = '192.168.20.130'
+host = '192.168.0.2'
 port = 81
 addr = (host, port)
 
@@ -19,14 +19,18 @@ tcp_socket.connect(addr)
 
 # Режим чтения или записи (2-запись 1-чтение)
 mod = 2
-# количество байт для записи или чтения
+# количество устройств для записи или чтения
 N = 1
 # адрес устройства
 Addr1 = 4
+Addr2 = 3
+Addr3 = 2
 # адрес регистра
-AddrReg = 1
+AddrReg = 7
 # данные для записи
 wdata = 1
+wdata2 = 1
+wdata3 = 1
 
 # data = int(data)
 # конвертация числа в тип bytes (2 байта)
@@ -35,6 +39,12 @@ data += N.to_bytes(1, byteorder='big')
 data += AddrReg.to_bytes(1, byteorder='big')
 data += Addr1.to_bytes(1, byteorder='big')
 data += wdata.to_bytes(2, byteorder='big')
+
+data += Addr2.to_bytes(1, byteorder='big')
+data += wdata2.to_bytes(2, byteorder='big')
+
+data += Addr3.to_bytes(1, byteorder='big')
+data += wdata3.to_bytes(2, byteorder='big')
 
 tcp_socket.send(data)
 data = bytes.decode(data)
