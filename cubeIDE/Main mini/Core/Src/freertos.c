@@ -269,75 +269,12 @@ void modbus1Task(void const * argument)
   /* USER CODE BEGIN modbus1Task */
    eMBMasterInit( MB_RTU, &huart1, 115200, &htim13 );
    eMBMasterEnable( );
-   xNeedPoll = TRUE;
-   osSemaphoreWait(InDataTCPHandle,1);
-   int32_t SemRet = 0;
+
    /* Infinite loop */
    for(;;)
    {
       eMBMasterPoll();
-      osDelay(1);
-//      if(xNeedPoll)
-//      {
-//         req_M = eMBMasterReqReadHoldingRegister(0x03, 0, 2, 2);
-//         xNeedPoll = FALSE;
-//      } 
-      //ждем симафора
-      SemRet = osSemaphoreWait(InDataTCPHandle,1);
-      if(SemRet != osErrorOS)
-      {
-         switch(input_data[0])
-         {
-           case 1: // read
-            {
-               for(int i = 3, a = 0; a < input_data[1]; ++i, ++a)//отправить запросы в 485
-               {
-                  while(!xNeedPoll)
-                  {}                                    //UCHAR ucSndAddr, USHORT usRegAddr, USHORT usNRegs, LONG lTimeOut
-                  req_M = eMBMasterReqReadHoldingRegister(input_data[i], input_data[2], 1, 2000);
-                  xNeedPoll = FALSE;  
-               }
-//               for(int i = 0; i < input_data[1]; ++i)// сохранить в буфер отправки ответы 
-//               {
-//                  
-//               }  
-//               req_M = eMBMasterWaitRequestFinish();
-//               while(eMBMasterWaitRequestFinish() != MB_MRE_NO_ERR)
-//               {}
-               //выдать симафор 
-//               osSemaphoreRelease(ModBusEndHandle);
-               break;
-            }
-           case 2: // write
-            {
-               USHORT temp = 0;
-               for(int i = 0, a = 3; i < input_data[1]; ++i, a+=3)//отправить запросы в 485
-               {
-                  while(!xNeedPoll){}                             
-                  
-                  temp = temp | (input_data[a+1] << 8);
-                  temp = temp | input_data[a+2];
-                                                      //HAR ucSndAddr, USHORT usRegAddr, USHORT usRegData, LONG lTimeOut
-                  req_M = eMBMasterReqWriteHoldingRegister(input_data[a], input_data[2], temp, 2);
-                  xNeedPoll = FALSE;
-                  ++i;
-                  // сохранить в буфер отправки ответы req_M
-               }    
-//               while(!xNeedPoll)
-//               {}
-//               //выдать симафор 
-//               osSemaphoreRelease(ModBusEndHandle);
-               break;
-            }
-           default:
-            {
-               //netconn_write(newconn,0,1,NETCONN_COPY);
-               break;
-            }
-            
-         }
-      }
-      
+      //osDelay(1);
    }
   /* USER CODE END modbus1Task */
 }
@@ -352,9 +289,73 @@ void modbus1Task(void const * argument)
 void modbus2Task(void const * argument)
 {
   /* USER CODE BEGIN modbus2Task */
+	   xNeedPoll = TRUE;
+	   osSemaphoreWait(InDataTCPHandle,1);
+	   int32_t SemRet = 0;
     /* Infinite loop */
     for(;;)
       {
+//      if(xNeedPoll)
+//      {
+//         req_M = eMBMasterReqReadHoldingRegister(0x03, 0, 2, 2);
+//         xNeedPoll = FALSE;
+//      } 
+	  //ждем симафора
+	  SemRet = osSemaphoreWait(InDataTCPHandle,1);
+	  if(SemRet != osErrorOS)
+	  {
+		 switch(input_data[0])
+		 {
+		   case 1: // read
+			{
+			   for(int i = 3, a = 0; a < input_data[1]; ++i, ++a)//отправить запросы в 485
+			   {
+				  while(!xNeedPoll)
+				  {}                                    //UCHAR ucSndAddr, USHORT usRegAddr, USHORT usNRegs, LONG lTimeOut
+				  req_M = eMBMasterReqReadHoldingRegister(input_data[i], input_data[2], 1, 2000);
+				  xNeedPoll = FALSE;
+			   }
+//               for(int i = 0; i < input_data[1]; ++i)// сохранить в буфер отправки ответы 
+//               {
+//                  
+//               }  
+//               req_M = eMBMasterWaitRequestFinish();
+//               while(eMBMasterWaitRequestFinish() != MB_MRE_NO_ERR)
+//               {}
+			   //выдать симафор
+//               osSemaphoreRelease(ModBusEndHandle);
+			   break;
+			}
+		   case 2: // write
+			{
+			   USHORT temp = 0;
+			   for(int i = 0, a = 3; i < input_data[1]; ++i, a+=3)//отправить запросы в 485
+			   {
+				  while(!xNeedPoll){}
+
+				  temp = temp | (input_data[a+1] << 8);
+				  temp = temp | input_data[a+2];
+													  //HAR ucSndAddr, USHORT usRegAddr, USHORT usRegData, LONG lTimeOut
+				  req_M = eMBMasterReqWriteHoldingRegister(input_data[a], input_data[2], temp, 2);
+				  xNeedPoll = FALSE;
+				  ++i;
+				  // сохранить в буфер отправки ответы req_M
+			   }
+//               while(!xNeedPoll)
+//               {}
+//               //выдать симафор 
+//               osSemaphoreRelease(ModBusEndHandle);
+			   break;
+			}
+		   default:
+			{
+			   //netconn_write(newconn,0,1,NETCONN_COPY);
+			   break;
+			}
+
+		 }
+	  }
+
         osDelay(1);
       }
   /* USER CODE END modbus2Task */
