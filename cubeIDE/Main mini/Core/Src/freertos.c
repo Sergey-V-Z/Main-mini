@@ -310,10 +310,10 @@ void modbus2Task(void const * argument)
 			{
 			   for(int i = 3, a = 0; a < input_data[1]; ++i, ++a)//отправить запросы в 485
 			   {
-				  while(!xNeedPoll)
-				  {}                                    //UCHAR ucSndAddr, USHORT usRegAddr, USHORT usNRegs, LONG lTimeOut
+				  //while(!xNeedPoll){}
+				  	  	  	  	  	  	  	  	  	  	  //UCHAR ucSndAddr, USHORT usRegAddr, USHORT usNRegs, LONG lTimeOut
 				  req_M = eMBMasterReqReadHoldingRegister(input_data[i], input_data[2], 1, 2000);
-				  xNeedPoll = FALSE;
+				  //xNeedPoll = FALSE;
 			   }
 //               for(int i = 0; i < input_data[1]; ++i)// сохранить в буфер отправки ответы 
 //               {
@@ -331,14 +331,15 @@ void modbus2Task(void const * argument)
 			   USHORT temp = 0;
 			   for(int i = 0, a = 3; i < input_data[1]; ++i, a+=3)//отправить запросы в 485
 			   {
-				  while(!xNeedPoll){}
+				  //while(!xNeedPoll){}
 
 				  temp = temp | (input_data[a+1] << 8);
 				  temp = temp | input_data[a+2];
 													  //HAR ucSndAddr, USHORT usRegAddr, USHORT usRegData, LONG lTimeOut
 				  req_M = eMBMasterReqWriteHoldingRegister(input_data[a], input_data[2], temp, 2);
-				  xNeedPoll = FALSE;
-				  ++i;
+				  //xNeedPoll = FALSE;
+				  osDelay(30);
+
 				  // сохранить в буфер отправки ответы req_M
 			   }
 //               while(!xNeedPoll)
