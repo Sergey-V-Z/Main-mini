@@ -42,6 +42,7 @@ https://github.com/ADElectronics/STM32-FreeModbus-Example
 extern uint16_t usMRegInBuf[MB_MASTER_TOTAL_SLAVE_NUM][M_REG_INPUT_NREGS];
 extern uint16_t   usMRegHoldBuf[MB_MASTER_TOTAL_SLAVE_NUM][M_REG_HOLDING_NREGS];
 eMBMasterReqErrCode req_M;
+eMBMasterEventType    eEvent_my;
 
 extern BOOL xNeedPoll;
 extern UART_HandleTypeDef huart1;
@@ -335,10 +336,19 @@ void modbus2Task(void const * argument)
 
 				  temp = temp | (input_data[a+1] << 8);
 				  temp = temp | input_data[a+2];
-													  //HAR ucSndAddr, USHORT usRegAddr, USHORT usRegData, LONG lTimeOut
-				  req_M = eMBMasterReqWriteHoldingRegister(input_data[a], input_data[2], temp, 2);
+
 				  //xNeedPoll = FALSE;
-				  osDelay(30);
+				  for (int var = 0; var < 100; ++var) {
+					  if( xMBMasterPortEventGet( &eEvent_my ) == TRUE )
+					  {
+						  if (eEvent_my == EV_MASTER_READY) {
+															  //HAR ucSndAddr, USHORT usRegAddr, USHORT usRegData, LONG lTimeOut
+						  req_M = eMBMasterReqWriteHoldingRegister(input_data[a], input_data[2], temp, 2);
+						}
+					  }
+					  osDelay(1);
+				  }
+
 
 				  // сохранить в буфер отправки ответы req_M
 			   }
