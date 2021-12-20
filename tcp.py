@@ -2,7 +2,7 @@ from socket import *
 import sys
 
 # Адрес центральной платы
-host = '192.168.0.2'
+host = '192.168.0.7'
 port = 81
 addr = (host, port)
 
