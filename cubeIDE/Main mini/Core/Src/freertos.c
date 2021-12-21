@@ -307,10 +307,13 @@ void modbus2Task(void const * argument)
 			{
 			   for(int i = 3, a = 0; a < input_data[1]; ++i, ++a)//отправить запросы в 485
 			   {
-				  //while(!xNeedPoll){}
-				  	  	  	  	  	  	  	  	  	  	  //UCHAR ucSndAddr, USHORT usRegAddr, USHORT usNRegs, LONG lTimeOut
+				 //отправляем данные
 				  req_M = eMBMasterReqReadHoldingRegister(input_data[i], input_data[2], 1, 2000);
-				  //xNeedPoll = FALSE;
+				 //ждем готовности мастера
+				  for (int var = 0; var < 100; ++var) {
+					  osDelay(1);
+					  if((eEvent_my = eMBMasterWaitRequestFinish()) != MB_MRE_NO_ERR ) break;
+				  }
 			   }
 
 			   break;
@@ -320,20 +323,16 @@ void modbus2Task(void const * argument)
 			   USHORT temp = 0;
 			   for(int i = 0, a = 3; i < input_data[1]; ++i, a+=3)//отправить запросы в 485
 			   {
-				  //while(!xNeedPoll){}
 
 				  temp = temp | (input_data[a+1] << 8);
 				  temp = temp | input_data[a+2];
 
-				  //xNeedPoll = FALSE;
+				  //отправляем данные
 				  req_M = eMBMasterReqWriteHoldingRegister(input_data[a], input_data[2], temp, 2);
 				 //ждем готовности мастера
 				  for (int var = 0; var < 100; ++var) {
-					  if((eEvent_my = eMBMasterWaitRequestFinish()) != MB_MRE_NO_ERR )
-					  {
-						 break;
-					  }
 					  osDelay(1);
+					  if((eEvent_my = eMBMasterWaitRequestFinish()) != MB_MRE_NO_ERR ) break;
 				  }
 
 				  // сохранить в буфер отправки ответы req_M
@@ -348,6 +347,9 @@ void modbus2Task(void const * argument)
 			}
 
 		 }
+		 osDelay(5);
+         //выдать симафор для tcp
+         osSemaphoreRelease(ModBusEndHandle);
 	  }
 
         osDelay(1);
@@ -416,19 +418,19 @@ void tcp_server(void const * argument)
                       if(SemRet != 0)
                       {
                          response[0] = -1;
-                         xNeedPoll = TRUE;
+                         //xNeedPoll = TRUE;
                       }else{
-                         response[0] = 0;
+                         response[0] = 127;
                          //обработать данные из modbus
                         
-                         for(volatile int i = 3; a < input_data[1]; ++i, ++a)
+                         for(volatile int i = 3; a < (input_data[1] * 2); i += 3, a += 2)
                          {
-//                            response[a] = (uint8_t)(usMRegHoldBuf[input_data[i]-1][input_data[2]]);
-//                            response[a+1] = (uint8_t)(usMRegHoldBuf[input_data[i]-1][input_data[2]]);
-                            (*((short *)(&(response[a]))))=(usMRegHoldBuf[input_data[i]-1][input_data[2]]);
+                            response[a+1] = (usMRegHoldBuf[input_data[i]-1][input_data[2]]) & 0x00ff;
+                            response[a] = ((usMRegHoldBuf[input_data[i]-1][input_data[2]]) & 0xff00) >> 8;
+                            //(*((short *)(&(response[a]))))=(usMRegHoldBuf[input_data[i]-1][input_data[2]]);
                          }
                       }
-                       netconn_write(newconn,response,((a*2)+1),NETCONN_COPY);
+                       netconn_write(newconn,response,a,NETCONN_COPY);
                        __ASM("NOP");
                     } while (netbuf_next(buf) >= 0);
                     netbuf_delete(buf);
