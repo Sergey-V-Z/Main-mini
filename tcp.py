@@ -2,7 +2,7 @@ from socket import *
 import sys
 
 # Адрес центральной платы
-host = '192.168.0.3'
+host = '192.168.0.11'
 port = 81
 addr = (host, port)
 
@@ -48,7 +48,7 @@ data += wdata3.to_bytes(2, byteorder='big')
 
 tcp_socket.send(data)
 data = bytes.decode(data)
-data = tcp_socket.recv(1024)
+#data = tcp_socket.recv(1024)
 print(data)
 
 tcp_socket.close()

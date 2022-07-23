@@ -414,7 +414,7 @@ void tcp_server(void const * argument)
                        //выдать симафор для modbus
                        osSemaphoreRelease(InDataTCPHandle);
                        
-                       // ожидание симафора
+                       // ожидание семафора
                       SemRet = osSemaphoreWait(ModBusEndHandle,100);
                       int a = 1;
                        //проверить если семафор не пришел то вернуть ощибку
